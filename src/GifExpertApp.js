@@ -1,24 +1,23 @@
 import React, { useState } from "react";
+import { AddCategory } from "./components/AddCategory";
 
 export const GifExpertApp = () => {
-  // const categories = ["One Punch", "Samurai X", "Dragon Ball"];
-
   const [categories, setCategories] = useState([
     "One Punch",
     "Samurai X",
     "Dragon Ball",
   ]);
 
-  const handleAddCategory = () => {
-    // setCategories([...categories, "Death Note"]);
-    setCategories((cats) => [...cats, "Death Note"]);
-  };
+  // const handleAddCategory = () => {
+  //   // setCategories([...categories, "Death Note"]);
+  //   setCategories((cats) => [...cats, "Death Note"]);
+  // };
 
   return (
     <>
       <h2>GifExpertApp</h2>
+      <AddCategory setCategories={setCategories} />
       <hr />
-      <button onClick={handleAddCategory}>Agregar</button>
       <ol>
         {categories.map((category) => (
           <li key={category}>{category}</li> // el key debe ser unico y no debe ser el indice
