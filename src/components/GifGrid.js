@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { GifGridItem } from "./GifGridItem";
 
 export const GifGrid = ({ category }) => {
-  const [count, setCount] = useState(0);
-
+  const [images, setImages] = useState([]);
   useEffect(() => {
     getGifs();
   }, []); // no poner dependecias aca hace que no se ejecute de nuevo la peticion
@@ -19,14 +19,15 @@ export const GifGrid = ({ category }) => {
       title: img.title,
       url: img.images?.downsized_medium.url,
     }));
-    console.log(gifs);
+    setImages(gifs);
   };
 
-  console.log(count);
   return (
     <div>
       <h3>{category}</h3>
-      <button onClick={() => setCount(count + 1)}>Buscar</button>
+      {images.map((img) => (
+        <GifGridItem key={img.id} {...img} />
+      ))}
     </div>
   );
 };
