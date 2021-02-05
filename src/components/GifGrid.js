@@ -1,26 +1,14 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { GifGridItem } from "./GifGridItem";
+import { getGifs } from "../helpers/getGifs";
 
 export const GifGrid = ({ category }) => {
   const [images, setImages] = useState([]);
+
   useEffect(() => {
-    getGifs();
-  }, []); // no poner dependecias aca hace que no se ejecute de nuevo la peticion
-
-  const getGifs = async () => {
-    const url =
-      "https://api.giphy.com/v1/gifs/search?q=dragon+ball&limit=10&api_key=d1DvYQ5f6O59f814O2FX5N3Gca3dBXwX";
-
-    const respuesta = await fetch(url);
-    const { data } = await respuesta.json();
-    const gifs = data.map((img) => ({
-      id: img.id,
-      title: img.title,
-      url: img.images?.downsized_medium.url,
-    }));
-    setImages(gifs);
-  };
+    getGifs(category).then((imgs) => setImages(imgs));
+  }, [category]); // si la categoria cambia va a volver a ejecutar el useEffect
 
   return (
     <>
