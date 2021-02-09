@@ -4,9 +4,11 @@ import "@testing-library/jest-dom";
 import { GifGridItem } from "../../components/GifGridItem";
 
 describe("pruebas en <GifGridItem />", () => {
-  let wrapper = shallow(<GifGridItem />); // no es buena practica pero sino no aplica las ayudas
+  const title = "Un titulo";
+  const url = "http://localhost/imagen.jpg";
+  let wrapper = shallow(<GifGridItem title={title} url={url} />); // no es buena practica pero sino no aplica las ayudas
   beforeEach(() => {
-    wrapper = shallow(<GifGridItem />);
+    wrapper = shallow(<GifGridItem title={title} url={url} />);
   });
 
   test("debe mostrar <GifGridItem /> correctamente", () => {
