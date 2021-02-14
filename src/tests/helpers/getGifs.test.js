@@ -11,7 +11,6 @@ describe("pruebas con getGifs Fetch", () => {
   test("debe tener un arreglo vacio", async () => {
     const gifs = await getGifs("");
 
-    console.log(gifs);
     expect(gifs.length).toBe(0);
   });
 });
