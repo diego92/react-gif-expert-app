@@ -6,12 +6,10 @@ export const AddCategory = ({ setCategories }) => {
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
-    console.log("handleInputChange llamado");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault(); // prevenimos el envío del formulario
-
     setCategories((cats) => [inputValue, ...cats]);
     setInputValue("");
   };
