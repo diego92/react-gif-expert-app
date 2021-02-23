@@ -26,10 +26,17 @@ describe("Pruebas en <GifGrid />", () => {
         url: "http://localhost:4000/cualquierimagen.jpg",
         title: "Cualquier cosa",
       },
+      {
+        id: "123",
+        url: "http://localhost:4000/cualquierimagen.jpg",
+        title: "Cualquier cosa",
+      },
     ];
     useFetchGifs.mockReturnValue({ data: gifs, loading: false });
 
     const wrapper = shallow(<GifGrid category={category} />);
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find("p").exists()).toBe(false); // Verifico que el parrafo no existe
+    expect(wrapper.find("GifGridItem").length).toBe(gifs.length); // Verifico que el parrafo no existe
   });
 });
